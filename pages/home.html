@@ -1,0 +1,115 @@
+<!-- banner -->
+
+<div class="container" ng-controller="myController">
+    
+    <div col-md-8>
+        <div class="container col-sm-12 col-md-8 col-md-push-2 mt-5 ">
+            <h2>Nhà Sách Tiki</h2>
+        </div>
+
+        <div id="carouselExample" class="container carousel slide col-md-8 col-sm-12">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://salt.tikicdn.com/cache/w1080/ts/tikimsp/fa/51/d2/0c66f36741a6268cbeda79f92e6c7cae.png"
+                        class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://salt.tikicdn.com/cache/w1080/ts/tikimsp/32/ea/f2/f4a5725dda017ea4c8645d01fe8f570b.png"
+                        class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://salt.tikicdn.com/cache/w1080/ts/tikimsp/07/df/a1/2604fbab78f9ade7f31ff0a2f9626725.png"
+                        class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev " type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- thẻ -->
+<div class="container col-md-8 col-md-push-2 mt-4 border-bottom fs-4 ">
+    <ul class="nav nav-underline mb-4 " id="menu">
+        <li class="nav-item  ">
+            <a class="ms-5 chu  " aria-current="page" ng-click="getAll()" >Phổ Biến</a>
+        </li>
+        <li class="nav-item">
+            <a class="ms-5 chu" ng-click="banChay()" >Bán Chạy</a>
+        </li>
+        <li class="nav-item">
+            <a class="ms-5 chu" ng-click="newPro()" >Hàng Mới</a>
+        </li>
+        <li class="nav-item">
+            <a class="ms-5 chu" ng-click="giaTangDan()">Giá Thấp</a>
+        </li>
+        <li class="nav-item">
+            <a class="ms-5 chu "  ng-click="giaGiamDan()" >Giá Cao</a>
+        </li>
+
+    </ul>
+</div>
+<!-- ship -->
+<div class="container col-md-8 col-md-push-2 mt-4 ">
+    <button class="border-0 me-2 " style="border-radius:12px ;"><img src="./images/Rectangle (1).png" alt=""></button>
+    <button class="border-0 " style="border-radius:12px ;"><img src="./images/Rectangle (2).png" alt=""></button>
+</div>
+<div class="container  col-md-8 col-md-push-2 text-start mt-3 mb-5" >
+    <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-2 g-lg-3 ">
+        <div class="col pt-5 sanpham" id="sach" ng-repeat="product in books">
+            <a href="#product/{{product.id}}" style="text-decoration: none;">
+                <div class="card border-0 image">
+                    <figure>
+                        <img src="{{product.images[0]}}" id="zoom-in" class="d-block h-100 w-100 " alt="No-item">
+                    </figure>
+                   
+                    <!-- <div id="carouselExample{{$index}}" class="carousel slide">
+                        <div ng-if="product.images.length == 1" class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{{product.images[0]}}" class="d-block h-100 w-100 " alt="No-item">
+                            </div>
+                        </div>
+                        <div ng-if="product.images.length == 2" class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{{product.images[0]}}" class="d-block  w-100" alt="No-item">
+                            </div>
+                            <div class="carousel-item card" ng-repeat="img in product.images track by $index">
+                                <img src="{{product.images[1]}}" class="d-block w-100 img-fluid" alt="No-item">
+                            </div>
+                        </div> -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample{{$index}}"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample{{$index}}"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <div class="card-body pt-5 ps-0 mx-auto">
+                        <a href="#" class="card-title fw-bold mb-3 tukhoa" style="font-size: 18px;">{{product.name}}</a>
+                        <br>                     
+                    <div class="card-text d-flex">
+                        <span ng-bind-html="renderRating(product.rating_average)|unsafe ">   </span>
+                        |   <span ng-if="product.quantity_sold.text != null" class="fw-light "
+                            style="font-size: 10px;">{{product.quantity_sold.text}}</span>
+                        <span ng-if="product.quantity_sold.text==null" class="fw-light " style="font-size: 10px;">Chưa bán</span>
+                    </div>
+                        <p class="card-text text-danger fw-bold mt-3"> {{product.original_price | currency :"" : 0}}
+                            <u>đ</u> <span class="fw-medium "
+                                style="border: 1px solid red; border-radius: 3px; font-size: 10px;padding: 0 5px">-32%</span>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

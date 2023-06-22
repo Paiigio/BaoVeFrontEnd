@@ -1,0 +1,35 @@
+
+<form action="" class="container mt-5 ">
+    <h2 class="text-center mb-5 fs-1 fw-bold ">Giỏ hàng</h2>
+    <table class="table text-center table-success table-striped">
+        <thead>
+            <th>STT</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="z in listGioHang" class="text-center">
+                <td class="fw-bold fs-4 pt-6 align-middle" scope="row">{{$index+1}}</td>
+                <td class="fw-bold fs-4 pt-6 align-middle">{{z.tensp}}</td>
+                <td class="fw-bold fs-4 pt-6 align-middle"><img src={{z.anhsp}} alt="" width="100px" height="100px"></td>
+                <td class="fw-bold fs-4 pt-6 text-danger align-middle">{{z.giasp}}</td>
+                <td class="fw-bold fs-4 pt-6 align-middle">{{z.soluongsp}}</td>
+                <td class="fw-bold fs-4 pt-6 align-middle text-danger">{{z.tien1sanpham}}</td>
+                <td class="fw-bold fs-4 pt-6 align-middle"><button class="btn btn-primary fs-4" ng-click="deleteGHSP(z.id)">Xóa</button></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+<div class="row container">
+    <div class="text-center">
+        <button class="col btn btn-success" style="width: 200px;margin-right: 100px;"
+            ng-click="thanhToan(listGioHang)">Thanh Toán</button>
+        <a class="col btn btn-success" href="#home" style="width: 200px;">Back</a>
+    </div>
+</div>
+<div style="margin-bottom: 10px;"></div>
